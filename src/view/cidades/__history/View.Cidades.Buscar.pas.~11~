@@ -1,0 +1,60 @@
+unit View.Cidades.Buscar;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, View.Herencas.Buscar, Data.DB,
+  System.ImageList, Vcl.ImgList, Vcl.Grids, Vcl.DBGrids, Vcl.StdCtrls,
+  Vcl.Buttons, Vcl.ExtCtrls, model.cidades.DM;
+
+type
+  TViewCidadesBuscar = class(TViewHerencasBuscar)
+    procedure FormCreate(Sender: TObject);
+    procedure FormDestroy(Sender: TObject);
+protected
+    procedure BuscarDados;  override;
+  public
+    { Public declarations }
+  end;
+
+var
+  ViewCidadesBuscar: TViewCidadesBuscar;
+
+implementation
+
+{$R *.dfm}
+
+uses
+  View.Cidades.Buscar;
+
+
+procedure TViewCidadesBuscar.BuscarDados;
+var
+  LCondicao: string;
+begin
+  LCondicao := '';
+  case rdGroupFiltros.ItemIndex of
+    0: LCondicao := 'where(id like ' + QuotedStr('%'+ edtBuscar.Text +'%')+ ')';
+    1: LCondicao := 'where(nome like ' + QuotedStr('%'+ edtBuscar.Text +'%')+ ')';
+    2: LCondicao := 'where(uf like ' + QuotedStr('%'+ edtBuscar.Text +'%')+ ')';
+  end;
+
+ModelCidadesDM.cidadesBuscar(LCondicao);
+
+end;
+
+procedure TViewCidadesBuscar.FormCreate(Sender: TObject);
+begin
+  inherited;
+  if (ModelCidadesDM = nil) then
+    ModelCidadesDM := TModelCidadesDM.Create(nil);
+end;
+
+procedure TViewCidadesBuscar.FormDestroy(Sender: TObject);
+begin
+  inherited;
+  FreeAndNil(ModelCidadesDM);
+end;
+
+end.

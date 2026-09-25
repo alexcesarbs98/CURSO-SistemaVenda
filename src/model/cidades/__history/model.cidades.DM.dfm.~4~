@@ -1,0 +1,78 @@
+object ModelCidadesDM: TModelCidadesDM
+  Height = 480
+  Width = 640
+  object QCidadeCadastro: TFDQuery
+    Connection = ModelConexaoDM.FDConnection1
+    SQL.Strings = (
+      '              select * from cidades')
+    Left = 120
+    Top = 72
+    object QCidadeCadastroid: TFDAutoIncField
+      DisplayLabel = 'Codigo'
+      FieldName = 'id'
+      Origin = 'id'
+      ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = False
+    end
+    object QCidadeCadastronome: TStringField
+      AutoGenerateValue = arDefault
+      DisplayLabel = 'Nome'
+      FieldName = 'nome'
+      Origin = 'nome'
+      Size = 60
+    end
+    object QCidadeCadastrouf: TStringField
+      AutoGenerateValue = arDefault
+      DisplayLabel = 'UF'
+      FieldName = 'uf'
+      Origin = 'uf'
+      Size = 2
+    end
+    object QCidadeCadastroibge: TIntegerField
+      AutoGenerateValue = arDefault
+      DisplayLabel = 'Codigo_IBGE'
+      FieldName = 'ibge'
+      Origin = 'ibge'
+    end
+  end
+  object QCidadeBusca: TFDQuery
+    Connection = ModelConexaoDM.FDConnection1
+    SQL.Strings = (
+      '                          select * from cidades')
+    Left = 240
+    Top = 72
+    object QCidadeBuscaid: TFDAutoIncField
+      FieldName = 'ID'
+      Origin = 'id'
+      ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = False
+    end
+    object QCidadeBuscanome: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'Nome'
+      Origin = 'nome'
+      Size = 60
+    end
+    object QCidadeBuscauf: TStringField
+      AutoGenerateValue = arDefault
+      FieldName = 'UF'
+      Origin = 'uf'
+      Size = 2
+    end
+    object QCidadeBuscaibge: TIntegerField
+      AutoGenerateValue = arDefault
+      FieldName = 'Codigo_IBGE'
+      Origin = 'ibge'
+    end
+  end
+  object DS_QCidadeCadastro: TDataSource
+    DataSet = QCidadeCadastro
+    Left = 120
+    Top = 136
+  end
+  object DS_QCidadeBusca: TDataSource
+    DataSet = QCidadeBusca
+    Left = 240
+    Top = 136
+  end
+end

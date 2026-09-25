@@ -1,0 +1,26 @@
+inherited ViewHerencasBuscar1: TViewHerencasBuscar1
+  Caption = 'ViewHerencasBuscar1'
+  StyleElements = [seFont, seClient, seBorder]
+  TextHeight = 15
+  inherited PnTopo: TPanel
+    StyleElements = [seFont, seClient, seBorder]
+    inherited Label1: TLabel
+      StyleElements = [seFont, seClient, seBorder]
+    end
+    inherited EditBuscar: TEdit
+      StyleElements = [seFont, seClient, seBorder]
+    end
+  end
+  inherited PnGrid: TPanel
+    StyleElements = [seFont, seClient, seBorder]
+  end
+  inherited PnRodape: TPanel
+    StyleElements = [seFont, seClient, seBorder]
+  end
+  inherited pnTotal: TPanel
+    StyleElements = [seFont, seClient, seBorder]
+    inherited lbTotal: TLabel
+      StyleElements = [seFont, seClient, seBorder]
+    end
+  end
+end

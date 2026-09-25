@@ -1,0 +1,83 @@
+unit View.Herencas.Cadastrar;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls,
+  System.ImageList, Vcl.ImgList, Data.DB, Vcl.Mask, Vcl.DBCtrls;
+
+type
+  TViewHerancasCadastrar = class(TForm)
+    pnDados: TPanel;
+    pnRodape: TPanel;
+    btnCancelar: TButton;
+    btnGravar: TButton;
+    ImageList1: TImageList;
+    DataSource1: TDataSource;
+    Label1: TLabel;
+    DBEdit1: TDBEdit;
+    DataSource2: TDataSource;
+    Label2: TLabel;
+    DBEdit2: TDBEdit;
+    Label3: TLabel;
+    DBEdit3: TDBEdit;
+    Label4: TLabel;
+    DBEdit4: TDBEdit;
+    procedure btnGravarClick(Sender: TObject);
+    procedure btnCancelarClick(Sender: TObject);
+    procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
+    procedure FormKeyPress(Sender: TObject; var Key: Char);
+  private
+
+  public
+
+  end;
+
+var
+  ViewHerancasCadastrar: TViewHerancasCadastrar;
+
+implementation
+
+{$R *.dfm}
+
+procedure TViewHerancasCadastrar.btnCancelarClick(Sender: TObject);
+begin
+     if(DataSource1.DataSet.State in [dsInsert, dsEdit]) then
+     DataSource1.DataSet.Cancel;
+     Self.Close;
+     Self.ModalResult := mrCancel;
+end;
+
+procedure TViewHerancasCadastrar.btnGravarClick(Sender: TObject);
+begin
+     Self.Close;
+     Self.ModalResult := mrOk;
+end;
+
+procedure TViewHerancasCadastrar.FormKeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+      case (Key) of
+      VK_F3:
+      btnGravar.click;
+      VK_F4:
+      begin
+        if (ssAlt in Shift) then
+        Key := 0;
+      end;
+      VK_ESCAPE:
+      btnCancelar.click;
+      end;
+end;
+
+procedure TViewHerancasCadastrar.FormKeyPress(Sender: TObject; var Key: Char);
+begin
+      if(Key = #13) then
+      begin
+        Perform(CM_DIALOGKEY, VK_TAB, 0) ;
+        Key := #0;
+      end;
+end;
+
+end.

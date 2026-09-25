@@ -1,0 +1,23 @@
+program C4Dvendas;
+
+uses
+  Vcl.Forms,
+  view.Principal in 'src\view\view.Principal.pas' {viewPrincipal},
+  Model.Conexao.DM in 'src\model\conexao\Model.Conexao.DM.pas' {ModelConexaoDM: TDataModule},
+  model.cidades.DM in 'src\model\cidades\model.cidades.DM.pas' {modelCidadesDM: TDataModule},
+  View.Herencas.Buscar in 'src\view\herancas\View.Herencas.Buscar.pas' {ViewHerencasBuscar},
+  View.Cidades.Buscar in 'src\view\cidades\View.Cidades.Buscar.pas' {ViewHerencasBuscar1};
+
+{$R *.res}
+
+begin
+  Application.Initialize;
+  Application.MainFormOnTaskbar := True;
+  Application.Title := 'Delphi';
+  Application.CreateForm(TviewPrincipal, viewPrincipal);
+  Application.CreateForm(TModelConexaoDM, ModelConexaoDM);
+  Application.CreateForm(TmodelCidadesDM, modelCidadesDM);
+  Application.CreateForm(TViewHerencasBuscar, ViewHerencasBuscar);
+  Application.CreateForm(TViewHerencasBuscar1, ViewHerencasBuscar1);
+  Application.Run;
+end.

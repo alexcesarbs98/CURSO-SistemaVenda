@@ -1,0 +1,11 @@
+inherited ViewHerancasCadastrar1: TViewHerancasCadastrar1
+  Caption = 'ViewHerancasCadastrar1'
+  StyleElements = [seFont, seClient, seBorder]
+  TextHeight = 15
+  inherited pnDados: TPanel
+    StyleElements = [seFont, seClient, seBorder]
+  end
+  inherited pnRodape: TPanel
+    StyleElements = [seFont, seClient, seBorder]
+  end
+end

@@ -1,0 +1,47 @@
+inherited ViewCidadesCadastrar: TViewCidadesCadastrar
+  Caption = 'ViewCidadesCadastrar'
+  StyleElements = [seFont, seClient, seBorder]
+  TextHeight = 15
+  inherited pnDados: TPanel
+    StyleElements = [seFont, seClient, seBorder]
+    ExplicitTop = -5
+    ExplicitWidth = 776
+    inherited Label1: TLabel
+      StyleElements = [seFont, seClient, seBorder]
+    end
+    inherited Label2: TLabel
+      StyleElements = [seFont, seClient, seBorder]
+    end
+    inherited Label3: TLabel
+      StyleElements = [seFont, seClient, seBorder]
+    end
+    inherited Label4: TLabel
+      StyleElements = [seFont, seClient, seBorder]
+    end
+    inherited DBEdit1: TDBEdit
+      DataSource = DataSource1
+      StyleElements = [seFont, seClient, seBorder]
+    end
+    inherited DBEdit2: TDBEdit
+      DataSource = DataSource1
+      StyleElements = [seFont, seClient, seBorder]
+    end
+    inherited DBEdit3: TDBEdit
+      DataSource = DataSource1
+      StyleElements = [seFont, seClient, seBorder]
+    end
+    inherited DBEdit4: TDBEdit
+      DataSource = DataSource1
+      StyleElements = [seFont, seClient, seBorder]
+    end
+  end
+  inherited pnRodape: TPanel
+    StyleElements = [seFont, seClient, seBorder]
+  end
+  inherited DataSource1: TDataSource
+    DataSet = ModelCidadesDM.QCidadeCadastro
+  end
+  inherited DataSource2: TDataSource
+    Left = 608
+  end
+end

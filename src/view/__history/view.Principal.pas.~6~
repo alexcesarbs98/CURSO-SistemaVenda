@@ -1,0 +1,85 @@
+unit view.Principal;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Menus, Vcl.ExtCtrls,ShellAPI, Vcl.Imaging.pngimage,
+  Vcl.Imaging.jpeg, Vcl.StdCtrls;
+
+type
+  TviewPrincipal = class(TForm)
+    MainMenu1: TMainMenu;
+    Cadastros1: TMenuItem;
+    Cadastros2: TMenuItem;
+    Financeiro1: TMenuItem;
+    Fiscal1: TMenuItem;
+    Empresas1: TMenuItem;
+    Empresas2: TMenuItem;
+    Pessoas1: TMenuItem;
+    Pessoas2: TMenuItem;
+    SubgruposdeProdutos1: TMenuItem;
+    SubgruposdeProdutos2: TMenuItem;
+    Vendas1: TMenuItem;
+    ContasaReceber1: TMenuItem;
+    Configuraes1: TMenuItem;
+    Configuraes2: TMenuItem;
+    pnLogo: TPanel;
+    Panel2: TPanel;
+    ttt: TPanel;
+    Image1: TImage;
+    lbGit: TLabel;
+    Label1: TLabel;
+    procedure lbGitClick(Sender: TObject);
+    procedure lbGitMouseEnter(Sender: TObject);
+    procedure lbGitMouseLeave(Sender: TObject);
+    procedure Empresas2Click(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  viewPrincipal: TviewPrincipal;
+
+implementation
+
+{$R *.dfm}
+
+uses
+View.Cidades.Buscar;
+
+procedure TviewPrincipal.Empresas2Click(Sender: TObject);
+begin
+   ViewCidadesBuscar := TViewCidadesBuscar.Create(nil);
+   try
+      ViewCidadesBuscar.ShowModal;
+   finally
+      FreeAndNil (ViewCidadesBuscar);
+   end;
+end;
+
+procedure TviewPrincipal.FormCreate(Sender: TObject);
+begin
+   ReportMemoryLeaksOnShutdown := True;
+end;
+
+procedure TviewPrincipal.lbGitClick(Sender: TObject);
+begin
+   shellExecute(0, nil, Pchar(Tlabel(Sender).Caption), '', '', SW_ShowNormal);
+   //0: Sem janela pai associada || nil: Operação padrão (geralmente interpretada como "open") || PChar(...): Converte a string da URL para o formato de ponteiro de caracteres exigido pela API do Windows || SW_SHOWNORMAL: Abre o navegador em tamanho de janela normal.
+end;
+
+procedure TviewPrincipal.lbGitMouseEnter(Sender: TObject);
+begin
+     TLabel(Sender).Font.Color := clRed;
+end;
+
+procedure TviewPrincipal.lbGitMouseLeave(Sender: TObject);
+begin
+      TLabel(Sender).Font.Color := clWindowText;
+end;
+
+end.

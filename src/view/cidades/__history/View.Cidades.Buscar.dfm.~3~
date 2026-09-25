@@ -1,0 +1,71 @@
+inherited ViewCidadesBuscar: TViewCidadesBuscar
+  Caption = 'ViewCidadesBuscar'
+  ClientHeight = 491
+  StyleElements = [seFont, seClient, seBorder]
+  ExplicitHeight = 530
+  TextHeight = 15
+  inherited PnTopo: TPanel
+    StyleElements = [seFont, seClient, seBorder]
+    inherited Label1: TLabel
+      StyleElements = [seFont, seClient, seBorder]
+    end
+    inherited EditBuscar: TEdit
+      StyleElements = [seFont, seClient, seBorder]
+    end
+  end
+  inherited PnGrid: TPanel
+    Height = 351
+    StyleElements = [seFont, seClient, seBorder]
+  end
+  inherited PnRodape: TPanel
+    Top = 441
+    StyleElements = [seFont, seClient, seBorder]
+    inherited rdGroupFiltros: TRadioGroup
+      Columns = 3
+      ItemIndex = 1
+      Items.Strings = (
+        'C'#243'digo'
+        'Nome'
+        'UF')
+      ExplicitTop = 6
+    end
+  end
+  inherited DBGrid1: TDBGrid
+    Height = 351
+    Columns = <
+      item
+        Expanded = False
+        FieldName = 'ID'
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'Nome'
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'UF'
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'Codigo_IBGE'
+        Visible = True
+      end>
+  end
+  inherited pnTotal: TPanel
+    Top = 416
+    Height = 25
+    StyleElements = [seFont, seClient, seBorder]
+    ExplicitTop = 392
+    ExplicitHeight = 25
+    inherited lbTotal: TLabel
+      Height = 23
+      StyleElements = [seFont, seClient, seBorder]
+    end
+  end
+  inherited DataSource1: TDataSource
+    DataSet = modelCidadesDM.QCidadeBusca
+  end
+end

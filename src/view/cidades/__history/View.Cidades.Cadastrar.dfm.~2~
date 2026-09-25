@@ -1,0 +1,15 @@
+inherited ViewCidadesCadastrar: TViewCidadesCadastrar
+  Caption = 'ViewCidadesCadastrar'
+  StyleElements = [seFont, seClient, seBorder]
+  TextHeight = 15
+  inherited pnDados: TPanel
+    StyleElements = [seFont, seClient, seBorder]
+    ExplicitLeft = 32
+    ExplicitTop = -88
+    ExplicitWidth = 755
+    ExplicitHeight = 335
+  end
+  inherited pnRodape: TPanel
+    StyleElements = [seFont, seClient, seBorder]
+  end
+end

@@ -1,0 +1,114 @@
+inherited ViewCidadesBuscar: TViewCidadesBuscar
+  Caption = 'Cidades Buscar'
+  ClientHeight = 451
+  ClientWidth = 547
+  StyleElements = [seFont, seClient, seBorder]
+  OnCreate = FormCreate
+  OnDestroy = FormDestroy
+  ExplicitWidth = 563
+  ExplicitHeight = 490
+  TextHeight = 15
+  inherited PnTopo: TPanel
+    Width = 547
+    StyleElements = [seFont, seClient, seBorder]
+    ExplicitLeft = -1
+    ExplicitTop = -6
+    ExplicitWidth = 547
+    inherited Label1: TLabel
+      StyleElements = [seFont, seClient, seBorder]
+    end
+    inherited edtBuscar: TEdit
+      Width = 515
+      StyleElements = [seFont, seClient, seBorder]
+    end
+  end
+  inherited PnGrid: TPanel
+    Width = 547
+    Height = 311
+    StyleElements = [seFont, seClient, seBorder]
+    ExplicitLeft = -8
+    ExplicitTop = 73
+    ExplicitWidth = 534
+    ExplicitHeight = 300
+  end
+  inherited PnRodape: TPanel
+    Top = 401
+    Width = 547
+    StyleElements = [seFont, seClient, seBorder]
+    ExplicitTop = 391
+    inherited rdGroupFiltros: TRadioGroup
+      Width = 222
+      Anchors = [akLeft, akTop, akRight, akBottom]
+      Columns = 3
+      ItemIndex = 1
+      Items.Strings = (
+        'C'#243'digo'
+        'Nome'
+        'UF')
+      ExplicitHeight = 48
+    end
+    inherited btnUtilizar: TBitBtn
+      Left = 337
+    end
+    inherited btnFechar: TBitBtn
+      Left = 443
+    end
+    inherited btnCadastrar: TBitBtn
+      Left = 231
+    end
+  end
+  inherited DBGrid1: TDBGrid
+    Width = 547
+    Height = 311
+    Columns = <
+      item
+        Expanded = False
+        FieldName = 'ID'
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'NOME'
+        Width = 291
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'UF'
+        Width = 58
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'CODIGO_IBGE'
+        Width = 82
+        Visible = True
+      end>
+  end
+  inherited pnTotal: TPanel
+    Top = 376
+    Width = 547
+    Height = 25
+    StyleElements = [seFont, seClient, seBorder]
+    ExplicitTop = 366
+    ExplicitHeight = 25
+    inherited lbTotal: TLabel
+      Left = 384
+      Width = 162
+      Height = 23
+      StyleElements = [seFont, seClient, seBorder]
+      ExplicitLeft = 376
+      ExplicitWidth = 162
+      ExplicitHeight = 23
+    end
+  end
+  inherited ImageList1: TImageList
+    Left = 440
+    Top = 304
+  end
+  inherited DataSource1: TDataSource
+    DataSet = ModelCidadesDM.QCidadeBusca
+    Left = 440
+    Top = 248
+  end
+end

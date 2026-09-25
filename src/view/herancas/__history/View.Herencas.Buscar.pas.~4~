@@ -1,0 +1,138 @@
+unit View.Herencas.Buscar;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls, Vcl.Buttons, Vcl.Imaging.pngimage,
+  System.ImageList, Vcl.ImgList, Data.DB, Vcl.Grids, Vcl.DBGrids;
+
+type
+  TViewHerencasBuscar = class(TForm)
+    PnTopo: TPanel;
+    PnGrid: TPanel;
+    PnRodape: TPanel;
+    Label1: TLabel;
+    EditBuscar: TEdit;
+    RadioGroup1: TRadioGroup;
+    btnUtilizar: TBitBtn;
+    btnFechar: TBitBtn;
+    btnCadastrar: TBitBtn;
+    ImageList1: TImageList;
+    DBGrid1: TDBGrid;
+    pnTotal: TPanel;
+    lbTotal: TLabel;
+    DataSource1: TDataSource;
+    procedure btnFecharClick(Sender: TObject);
+    procedure btnUtilizarClick(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+    procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
+    procedure EditBuscarKeyDown(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
+    procedure EditBuscarKeyPress(Sender: TObject; var Key: Char);
+    procedure EditBuscarChange(Sender: TObject);
+    procedure DBGrid1DblClick(Sender: TObject);
+    procedure DBGrid1KeyPress(Sender: TObject; var Key: Char);
+    procedure DBGrid1DrawColumnCell(Sender: TObject; const Rect: TRect;
+      DataCol: Integer; Column: TColumn; State: TGridDrawState);
+  private
+
+    protected
+    procedure BuscarDados;  virtual;
+
+  public
+    { Public declarations }
+  end;
+
+var
+  ViewHerencasBuscar: TViewHerencasBuscar;
+
+implementation
+
+{$R *.dfm}
+
+procedure TViewHerencasBuscar.btnFecharClick(Sender: TObject);
+begin
+     Self.Close;
+     Self.ModalResult := mrCancel;
+end;
+
+procedure TViewHerencasBuscar.btnUtilizarClick(Sender: TObject);
+begin
+      if (DataSource1.DataSet.IsEmpty) then
+      raise Exception.Create('Selecione um registro');
+
+     Self.Close;
+     Self.ModalResult := mrOk;
+end;
+
+procedure TViewHerencasBuscar.EditBuscarChange(Sender: TObject);
+begin
+     Self.BuscarDados;
+end;
+
+procedure TViewHerencasBuscar.BuscarDados;
+begin
+     lbTotal.Caption := 'Registros localizados: 000000';
+     if (DataSource1.DataSet.IsEmpty) then
+     Exit;
+
+      lbTotal.Caption := 'Registros localizados: ' + FormatFloat('000000', DataSource1.DataSet.RecordCount);
+end;
+
+procedure TViewHerencasBuscar.DBGrid1DblClick(Sender: TObject);
+begin
+   btnUtilizar.Click;
+end;
+
+procedure TViewHerencasBuscar.DBGrid1DrawColumnCell(Sender: TObject;
+  const Rect: TRect; DataCol: Integer; Column: TColumn; State: TGridDrawState);
+begin
+   if(not Odd (DataSource1.DataSet.RecNo)) then
+    DBGrid1.Canvas.Brush.color := $ 00DDDDDD;
+
+    DBGrid1.DefaultDrawColumnCell(Rect, DataCol, Column, State);
+end;
+
+procedure TViewHerencasBuscar.DBGrid1KeyPress(Sender: TObject; var Key: Char);
+begin
+     if (Key = #13) then
+      btnUtilizar.Click
+end;
+
+procedure TViewHerencasBuscar.EditBuscarKeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+   case (Key) of
+   VK_UP: DataSource1.DataSet.Prior;
+   VK_DOWN: DataSource1.DataSet.Next;
+   end;
+end;
+
+procedure TViewHerencasBuscar.EditBuscarKeyPress(Sender: TObject;
+  var Key: Char);
+begin
+    if (Key = #13) and (not DataSource1.DataSet.IsEmpty) then
+    btnUtilizar.Click;
+end;
+
+procedure TViewHerencasBuscar.FormKeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+      case(Key) of
+      VK_F4:
+      begin
+        if (ssAlt in Shift) then
+        Key := 0;
+      end;
+      VK_ESCAPE: btnFechar.Click;
+      end;
+end;
+
+procedure TViewHerencasBuscar.FormShow(Sender: TObject);
+begin
+     Self.ModalResult := mrCancel;
+     edtBuscar.SetFocus;
+end;
+
+end.

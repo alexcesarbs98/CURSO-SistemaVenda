@@ -1,0 +1,19 @@
+program C4Dvendas;
+
+uses
+  Vcl.Forms,
+  view.Principal in 'src\view\view.Principal.pas' {viewPrincipal},
+  Model.Conexao.DM in 'src\model\conexao\Model.Conexao.DM.pas' {ModelConexaoDM: TDataModule},
+  model.cidades.DM in 'src\model\cidades\model.cidades.DM.pas' {modelCidadesDM: TDataModule};
+
+{$R *.res}
+
+begin
+  Application.Initialize;
+  Application.MainFormOnTaskbar := True;
+  Application.Title := 'Delphi';
+  Application.CreateForm(TviewPrincipal, viewPrincipal);
+  Application.CreateForm(TModelConexaoDM, ModelConexaoDM);
+  Application.CreateForm(TmodelCidadesDM, modelCidadesDM);
+  Application.Run;
+end.
