@@ -10,8 +10,9 @@ inherited ViewCidadesCadastrar: TViewCidadesCadastrar
     Width = 519
     Height = 296
     StyleElements = [seFont, seClient, seBorder]
-    ExplicitWidth = 519
-    ExplicitHeight = 296
+    ExplicitLeft = 0
+    ExplicitTop = -5
+    ExplicitWidth = 832
     inherited Label1: TLabel
       StyleElements = [seFont, seClient, seBorder]
     end
@@ -49,15 +50,11 @@ inherited ViewCidadesCadastrar: TViewCidadesCadastrar
     Top = 296
     Width = 519
     StyleElements = [seFont, seClient, seBorder]
-    ExplicitTop = 296
-    ExplicitWidth = 519
     inherited btnCancelar: TButton
       Left = 420
-      ExplicitLeft = 420
     end
     inherited btnGravar: TButton
       Left = 321
-      ExplicitLeft = 321
     end
   end
   inherited ImageList1: TImageList

@@ -48,9 +48,6 @@ begin
         raise Exception.Create('Código do IBGE deve conter 7 caracteres');
       end;
    end;
-
-   DataSource1.DataSet.Post;
-   inherited;
 end;
 
 end.

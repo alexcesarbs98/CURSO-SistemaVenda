@@ -28,29 +28,9 @@ implementation
 
 procedure TViewCidadesCadastrar.btnGravarClick(Sender: TObject);
 begin
-   if(Trim(edtNome.Text).IsEmpty) then
-   begin
-     edtNome.SetFocus;
-     raise Exception.Create('Preencha o campo nome');
-   end;
+  inherited;
+   if True then
 
-   if(Trim(cBoxUF.Text).IsEmpty) then
-   begin
-     cBoxUF.SetFocus;
-     raise Exception.Create('Preencha o campo UF');
-   end;
-
-   if(not Trim(edtCodIBGE.Text).IsEmpty) then
-   begin
-      if(Length(edtCodIBGE.Text) <> 7) then
-      begin
-        edtCodIBGE.SetFocus;
-        raise Exception.Create('Código do IBGE deve conter 7 caracteres');
-      end;
-   end;
-
-   DataSource1.DataSet.Post;
-   inherited;
 end;
 
 end.
