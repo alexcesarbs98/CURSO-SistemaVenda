@@ -16,13 +16,13 @@ type
     ImageList1: TImageList;
     DataSource1: TDataSource;
     Label1: TLabel;
-    edtCodigo: TDBEdit;
+    DBEdit1: TDBEdit;
     Label2: TLabel;
-    edtNome: TDBEdit;
+    DBEdit2: TDBEdit;
     Label3: TLabel;
+    DBEdit3: TDBEdit;
     Label4: TLabel;
-    edtCodIBGE: TDBEdit;
-    cBoxUF: TDBComboBox;
+    DBEdit4: TDBEdit;
     procedure btnGravarClick(Sender: TObject);
     procedure btnCancelarClick(Sender: TObject);
     procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);

@@ -9,7 +9,7 @@ uses
 
 type
   TViewCidadesCadastrar = class(TViewHerancasCadastrar)
-    procedure btnGravarClick(Sender: TObject);
+    ComboBox1: TComboBox;
    // procedure DBEdit3Change(Sender: TObject);
   private
     { Private declarations }
@@ -25,12 +25,5 @@ implementation
 {$R *.dfm}
 
 
-
-procedure TViewCidadesCadastrar.btnGravarClick(Sender: TObject);
-begin
-  inherited;
-   if True then
-
-end;
 
 end.
